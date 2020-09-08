@@ -13,6 +13,9 @@ const SUBSTRING = process.argv[3]
   : 'rodo';
 
 (async () => {
+
+  let result = 0;
+
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox']
@@ -33,6 +36,7 @@ const SUBSTRING = process.argv[3]
       .then(response => {
         const request_url = request.url();        
         if (request_url.includes(SUBSTRING)) {
+          result++;
           console.log(request_url);
         }
         request.continue();
@@ -48,4 +52,8 @@ const SUBSTRING = process.argv[3]
   });
 
   await browser.close();
+
+  if (result === 0) {
+    process.exit(1);
+  }
 })();
