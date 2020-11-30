@@ -24,7 +24,7 @@ const SUBSTRING = process.argv[3]
   await page.setViewport({
     width: 1920,
     height: 10000
-  });  
+  });
 
   await page.setRequestInterception(true);
 
@@ -34,7 +34,7 @@ const SUBSTRING = process.argv[3]
       resolveWithFullResponse: true
     })
       .then(response => {
-        const request_url = request.url();        
+        const request_url = request.url();
         if (request_url.includes(SUBSTRING)) {
           result++;
           console.log(request_url);
