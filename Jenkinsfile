@@ -10,6 +10,8 @@ pipeline {
                     echo "Multiline shell steps works too"
                     ls -hal
                     node --version
+                    npm i
+                    ./start.sh
                 '''
             }
         }
